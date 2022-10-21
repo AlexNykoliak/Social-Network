@@ -3,7 +3,7 @@ import json
 from django.http import HttpResponse
 
 from .models import Profile, Post, Like, Unlike
-from .serializers import PostSerializer, LikeSerializer, UnlikeSerializer
+from .serializers import ProfileSerializer, PostSerializer, LikeSerializer, UnlikeSerializer
 from rest_framework import generics
 
 """
@@ -41,3 +41,13 @@ class AnaliticsView(generics.ListAPIView):
             return HttpResponse(json.dumps({'For this period of time there were LIKES in ammount': len(likes_count)}), mimetype)
         else:
             return HttpResponse(json.dumps({'There were no likes': []}))
+
+"""
+need to make it
+"""
+
+class ActivityView(generics.RetrieveAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+
+
