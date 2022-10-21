@@ -1,3 +1,7 @@
+import json
+
+from django.http import HttpResponse
+
 from .models import Profile, Post, Like, Unlike
 from .serializers import PostSerializer, LikeSerializer, UnlikeSerializer
 from rest_framework import generics
@@ -25,3 +29,15 @@ class PostLikeView(generics.CreateAPIView):
 class PostUnlikeView(generics.CreateAPIView):
     queryset = Unlike.objects.all()
     serializer_class = UnlikeSerializer
+
+
+class AnaliticsView(generics.ListAPIView):
+    serializer_class = LikeSerializer
+
+    def get(self, request, *args, **kwargs):
+        likes_count = Like.objects.filter(publication_date__range=[kwargs['date_from'], kwargs['date_to']])
+        if len(likes_count) > 0:
+            mimetype = 'application/json'
+            return HttpResponse(json.dumps({'For this period of time there were LIKES in ammount': len(likes_count)}), mimetype)
+        else:
+            return HttpResponse(json.dumps({'There were no likes': []}))
