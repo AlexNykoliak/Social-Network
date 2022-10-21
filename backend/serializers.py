@@ -19,6 +19,12 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = ['author', 'title', 'body', 'publication_date']
 
+    # Make representation instead of id we will have author real name
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret['author'] = instance.author.username
+        return ret
+
 
 class LikeSerializer(serializers.ModelSerializer):
     """
