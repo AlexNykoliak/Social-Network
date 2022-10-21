@@ -41,4 +41,4 @@ class UnlikeSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Unlike
-        fields = ['user', 'post', 'like', 'publication_date']
+        fields = ['user', 'post', 'unlike', 'publication_date']

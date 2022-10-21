@@ -42,5 +42,5 @@ class Unlike(models.Model):
     """
     user = models.ForeignKey(User, related_name='user_unlike', on_delete=models.CASCADE)
     post = models.ForeignKey(Post, related_name='post_unlike', on_delete=models.CASCADE)
-    like = models.SmallIntegerField(default=0)
+    unlike = models.SmallIntegerField(default=0)
     publication_date = models.DateField(format('%Y-%m-%d'), auto_now_add=True)
