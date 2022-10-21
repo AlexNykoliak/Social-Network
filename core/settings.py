@@ -44,18 +44,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 3rd-party apps
-    "django.contrib.sites",  # new
+    "django.contrib.sites",
     "rest_framework",
     "corsheaders",
     "rest_framework.authtoken",
-    "allauth",  # new
-    "allauth.account",  # new
-    "allauth.socialaccount",  # new
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     "dj_rest_auth",
-    "dj_rest_auth.registration",  # new
-
-
-
+    "dj_rest_auth.registration",
 
     # Local
     'backend.apps.BackendConfig',
@@ -81,8 +78,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
@@ -150,8 +148,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/"),)
 
