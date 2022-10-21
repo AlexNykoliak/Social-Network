@@ -44,7 +44,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 3rd-party apps
-    'rest_framework',
+    "django.contrib.sites",  # new
+    "rest_framework",
+    "corsheaders",
+    "rest_framework.authtoken",
+    "allauth",  # new
+    "allauth.account",  # new
+    "allauth.socialaccount",  # new
+    "dj_rest_auth",
+    "dj_rest_auth.registration",  # new
+
+
+
 
     # Local
     'backend.apps.BackendConfig',
@@ -53,9 +64,14 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -142,3 +158,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static/"),)
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SITE_ID = 1
