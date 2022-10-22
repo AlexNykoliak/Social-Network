@@ -1,5 +1,5 @@
 # Social-Network
-REST API test task with two basic models: User &amp; Post. Opportunity to like/unlike, user signup, user login, post creation and analitics. Tried to make ​clean and usable REST API. Thank you for attention :)
+REST API test task with 4 basic models: Profile, Post, Like, Unlike. Opportunity to like/unlike, user signup, user login, post creation and analitics. Tried to make ​clean and usable REST API. App is devided for two parts: 'backend' - where we have our api and 'frontend' - which will help us to provide separation of concerns in the future when it will be necessary. Thank you for attention :)
 
 # Firing up Social Network project:
 With PIP:
